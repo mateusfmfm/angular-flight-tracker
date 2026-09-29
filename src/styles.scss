@@ -1,6 +1,28 @@
-/* Global typography — Helvetica (system on macOS; Arial fallback elsewhere) */
+/* Dark theme (default) — flight / radar palette */
 :root {
+  color-scheme: dark;
+
   --font-sans: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+
+  --bg: #0b0f14;
+  --bg-elevated: #12181f;
+  --bg-muted: #1a222c;
+  --surface: #151c24;
+  --border: #2a3441;
+  --border-subtle: #1e2732;
+
+  --text: #e8eef4;
+  --text-muted: #9aa8b6;
+  --text-faint: #6b7a8a;
+
+  --accent: #3dd6c6;
+  --accent-muted: rgba(61, 214, 198, 0.15);
+  --danger: #f07178;
+  --warning: #e6c07b;
+
+  --header-height: 3.5rem;
+  --footer-height: 2.75rem;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 *,
@@ -15,12 +37,41 @@ body {
   padding: 0;
   min-height: 100%;
   font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+p {
+  margin: 0 0 0.75rem;
+  color: var(--text-muted);
 }
 
 button,
@@ -28,4 +79,14 @@ input,
 textarea,
 select {
   font-family: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent-muted);
+  color: var(--text);
 }
