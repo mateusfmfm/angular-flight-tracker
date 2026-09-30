@@ -1,7 +1,14 @@
 :host {
   display: block;
-  width: 100%;
   height: 100%;
+}
+
+:host ::ng-deep .maplibregl-control-container {
+  transition: transform var(--drawer-duration) var(--drawer-easing);
+}
+
+:host(.map--shifted) ::ng-deep .maplibregl-control-container {
+  transform: translateX(calc(var(--drawer-width) / -2));
 }
 
 mgl-map {

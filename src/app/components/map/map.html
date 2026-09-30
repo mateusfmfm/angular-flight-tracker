@@ -1,4 +1,4 @@
-<div class="map">
+<div class="map" (click)="onBackgroundClick($event)">
   <mgl-map
     [mapStyle]="mapStyle"
     [center]="center"
@@ -8,5 +8,10 @@
   >
     <mgl-control mglNavigation position="top-right" />
   </mgl-map>
-  <app-aircraft-component class="map__aircraft"/>
+  <app-aircraft-component
+    class="map__aircraft"
+    [aircraft]="previewAircraft"
+    [selected]="aircraftSelected()"
+    (aircraftClick)="onAircraftClick($event)"
+  />
 </div>

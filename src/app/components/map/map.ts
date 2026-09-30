@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import {
   ControlComponent,
   MapComponent,
   NavigationControlDirective,
 } from '@maplibre/ngx-maplibre-gl';
 import type { LngLatLike, Map as MapLibreMap } from 'maplibre-gl';
+import { mockAircraft } from '../../data/models/aircraft.mock';
+import { Aircraft } from '../../data/models/aircraft.model';
 import { AircraftComponent } from '../aircraft-component/aircraft-component';
 
 export interface MapViewportBounds {
@@ -19,18 +21,39 @@ export interface MapViewportBounds {
   imports: [MapComponent, ControlComponent, NavigationControlDirective, AircraftComponent],
   templateUrl: './map.html',
   styleUrl: './map.scss',
+  host: {
+    '[class.map--shifted]': 'aircraftSelected()',
+  },
 })
 export class FlightMap {
+
   /** OpenFreeMap Bright — sem API key (tema claro) */
   readonly mapStyle = 'https://tiles.openfreemap.org/styles/bright';
   readonly center: LngLatLike = [-46.6333, -23.5505];
   readonly zoom = 10;
+  readonly previewAircraft = mockAircraft;
+  readonly aircraftSelected = input(false);
+  readonly aircraftClick = output<Aircraft>();
+  readonly backgroundClick = output<void>();
 
   private map?: MapLibreMap;
 
   onMapLoad(map: MapLibreMap): void {
     this.map = map;
     this.logViewportBounds();
+  }
+
+  onAircraftClick(aircraft: Aircraft): void {
+    this.aircraftClick.emit(aircraft);
+  }
+
+  onBackgroundClick(event: MouseEvent): void {
+    const target = event.target;
+    if (target instanceof Element && target.closest('app-aircraft-component')) {
+      return;
+    }
+
+    this.backgroundClick.emit();
   }
 
   onMoveEnd(): void {

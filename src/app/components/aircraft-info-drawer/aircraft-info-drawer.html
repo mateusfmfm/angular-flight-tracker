@@ -1,1 +1,31 @@
-<p>aircraft-info-drawer works!</p>
+@if (aircraft(); as aircraft) {
+  <aside class="drawer" aria-label="Informações da aeronave">
+    <header class="drawer__header">
+      <div class="drawer__heading">
+        <h2 class="drawer__title">{{ aircraft.callsign }}</h2>
+        <p class="drawer__subtitle">{{ aircraft.icao24 }}</p>
+      </div>
+      <button type="button" class="drawer__close" (click)="close()" aria-label="Fechar">
+        <span aria-hidden="true">×</span>
+      </button>
+    </header>
+
+    <div class="drawer__photo">
+      <img
+        src="images/aircraft.svg"
+        [alt]="'Aeronave ' + aircraft.callsign"
+        width="500"
+        height="300"
+      />
+    </div>
+
+    <dl class="drawer__details">
+      @for (row of rows(); track row.label) {
+        <div class="drawer__row">
+          <dt>{{ row.label }}</dt>
+          <dd>{{ row.value }}</dd>
+        </div>
+      }
+    </dl>
+  </aside>
+}

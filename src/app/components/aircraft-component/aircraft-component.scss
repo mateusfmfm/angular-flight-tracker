@@ -1,16 +1,51 @@
 path {
-    fill: #c2410c;
-    transition: fill 0.3s ease;
-  }
-  
-  svg:hover path {
+  fill: #c2410c;
+  transition: fill 0.3s ease;
+}
+
+svg {
+  transition: filter 0.3s ease;
+}
+
+:host(:hover),
+:host(.aircraft--selected) {
+  path {
     fill: #722f37;
   }
-  
+
   svg {
-    transition: filter 0.3s ease;
-  }
-  
-  svg:hover {
     filter: drop-shadow(0 0 6px grey);
   }
+
+  .aircraft__icao {
+    opacity: 1;
+  }
+}
+
+.aircraft__icao {
+  font-size: 12px;
+  color: #fff;
+  background-color: #000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-20%, -110%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.aircraft__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}

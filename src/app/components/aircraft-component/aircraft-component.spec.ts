@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { mockAircraft } from '../../data/models/aircraft.mock';
 import { AircraftComponent } from './aircraft-component';
 
 describe('AircraftComponent', () => {
@@ -11,6 +12,7 @@ describe('AircraftComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(AircraftComponent);
+    fixture.componentRef.setInput('aircraft', mockAircraft);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

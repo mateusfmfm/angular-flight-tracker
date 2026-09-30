@@ -1,3 +1,12 @@
 <app-scaffold>
-  <app-map />
+  <div class="home" [class.home--drawer-open]="selectedAircraft() !== null">
+    <div class="home__stage">
+      <app-map
+        [aircraftSelected]="selectedAircraft() !== null"
+        (aircraftClick)="openAircraft($event)"
+        (backgroundClick)="closeAircraft()"
+      />
+    </div>
+    <app-aircraft-info-drawer [aircraft]="selectedAircraft()" (closed)="closeAircraft()" />
+  </div>
 </app-scaffold>

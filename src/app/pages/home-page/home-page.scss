@@ -2,8 +2,30 @@
   display: block;
 }
 
-app-map {
-  display: block;
-  width: 100%;
+.home {
+  display: flex;
+  align-items: stretch;
   height: calc(100dvh - var(--header-height) - var(--footer-height));
+  min-width: 0;
+  container-type: inline-size;
+}
+
+.home__stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+app-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100cqi;
+  height: 100%;
+  transition: transform var(--drawer-duration) var(--drawer-easing);
+}
+
+.home--drawer-open app-map {
+  transform: translateX(calc(var(--drawer-width) / -2));
 }

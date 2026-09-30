@@ -1,0 +1,118 @@
+:host {
+  display: block;
+  flex: 0 0 auto;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  transition: width var(--drawer-duration) var(--drawer-easing);
+}
+
+:host(.is-open) {
+  width: var(--drawer-width);
+  border-left: 1px solid var(--border);
+}
+
+.drawer {
+  display: flex;
+  flex-direction: column;
+  width: var(--drawer-width);
+  height: 100%;
+  overflow: auto;
+  color: var(--text);
+}
+
+.drawer__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1rem 0.75rem;
+}
+
+.drawer__heading {
+  min-width: 0;
+}
+
+.drawer__title {
+  margin: 0;
+  font-size: 1.125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.drawer__subtitle {
+  margin: 0.15rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.drawer__close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.drawer__photo {
+  position: relative;
+  flex-shrink: 0;
+  aspect-ratio: 5 / 3;
+  margin: 0 1rem;
+  border-radius: 0.5rem;
+  background: var(--bg-muted);
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.drawer__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 1rem 0 0;
+  padding: 0 1rem 1.25rem;
+}
+
+.drawer__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--border-subtle);
+
+  dt {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  dd {
+    margin: 0;
+    text-align: right;
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+  }
+}
