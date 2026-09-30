@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+app-map {
+  display: block;
+  width: 100%;
+  height: calc(100dvh - var(--header-height) - var(--footer-height));
+}

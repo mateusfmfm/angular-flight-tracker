@@ -1,1 +1,9 @@
-<p>map works!</p>
+<mgl-map
+  [mapStyle]="mapStyle"
+  [center]="center"
+  [zoom]="zoom"
+  (mapLoad)="onMapLoad($event)"
+  (moveEnd)="onMoveEnd()"
+>
+  <mgl-control mglNavigation position="top-right" />
+</mgl-map>
