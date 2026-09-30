@@ -96,7 +96,7 @@
     yargs "18.1.0"
     zod "4.6.5"
 
-"@angular/common@^22.2.0", "@angular/common@>= 22.0.0", "@angular/common@22.2.0":
+"@angular/common@^22.2.0", "@angular/common@>= 22.0.0", "@angular/common@>=18", "@angular/common@22.2.0":
   version "22.2.0"
   resolved "https://registry.npmjs.org/@angular/common/-/common-22.2.0.tgz"
   integrity sha512-BUKkncKwnaEcF/qatBOpzSIx2NthFZLYlTcE7iHwwsw+XQrwB9hU8Ca/l5HqaTJiMg0D8MjI/SWHnD4LFtNN+w==
@@ -124,7 +124,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^20.0.0 || ^21.0.0 || ^22.0.0", "@angular/core@^22.0.0", "@angular/core@^22.2.0", "@angular/core@>= 22.0.0", "@angular/core@22.2.0":
+"@angular/core@^20.0.0 || ^21.0.0 || ^22.0.0", "@angular/core@^22.0.0", "@angular/core@^22.2.0", "@angular/core@>= 22.0.0", "@angular/core@>=18", "@angular/core@22.2.0":
   version "22.2.0"
   resolved "https://registry.npmjs.org/@angular/core/-/core-22.2.0.tgz"
   integrity sha512-VhAgJ4GCdGgAy9+zADpSyEM9gt4pKg6+cqNeK3RBNeF3M3B8y7AWfD/nYRdM3Xzi152Pu+ipgFFNHpupCLTsvQ==
@@ -701,6 +701,20 @@
     "@napi-rs/nice-win32-arm64-msvc" "1.1.1"
     "@napi-rs/nice-win32-ia32-msvc" "1.1.1"
     "@napi-rs/nice-win32-x64-msvc" "1.1.1"
+
+"@ngx-translate/core@^18.0.0", "@ngx-translate/core@>=18.0.0":
+  version "18.0.0"
+  resolved "https://registry.npmjs.org/@ngx-translate/core/-/core-18.0.0.tgz"
+  integrity sha512-Z9u9AXaeuyeHHimivvJQvhal/LJNB+5tlH+FimSU4QQ61FrtRDqgyn6nfFbc6Cb+59NDZdsh4QeTJyPCldFUwA==
+  dependencies:
+    tslib "^2.3.0"
+
+"@ngx-translate/http-loader@^18.0.0":
+  version "18.0.0"
+  resolved "https://registry.npmjs.org/@ngx-translate/http-loader/-/http-loader-18.0.0.tgz"
+  integrity sha512-p6QpNcU3rkCYjHbKVIadcYtml/Njpr0aLp8neJ4uJWQ4Xm9f09bIePhOjdjAFHupTptKqKrG1J2gSi3RSwgYeA==
+  dependencies:
+    tslib "^2.3.0"
 
 "@oxc-parser/binding-darwin-arm64@0.150.0":
   version "0.150.0"
@@ -1894,7 +1908,7 @@ rolldown@1.2.8:
     "@rolldown/binding-win32-arm64-msvc" "1.2.8"
     "@rolldown/binding-win32-x64-msvc" "1.2.8"
 
-"rxjs@^6.5.3 || ^7.4.0", rxjs@^7.3.0, rxjs@^7.4.0, rxjs@^7.8.0, "rxjs@>= 7.8.1", rxjs@~7.8.0, rxjs@7.8.2:
+"rxjs@^6.5.3 || ^7.4.0", rxjs@^7.3.0, rxjs@^7.4.0, rxjs@^7.8.0, "rxjs@>= 7.8.1", rxjs@>=7, rxjs@~7.8.0, rxjs@7.8.2:
   version "7.8.2"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.8.2.tgz"
   integrity sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==

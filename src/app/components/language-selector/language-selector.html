@@ -1,0 +1,14 @@
+<div class="selector" role="group" aria-label="Language">
+  @for (language of languages; track language.id) {
+    <button
+      type="button"
+      class="flag"
+      [class.flag--active]="current() === language.id"
+      [attr.aria-pressed]="current() === language.id"
+      [attr.aria-label]="language.label"
+      (click)="select(language.id)"
+    >
+      <img [ngSrc]="language.src" [alt]="language.label" width="28" height="28" />
+    </button>
+  }
+</div>

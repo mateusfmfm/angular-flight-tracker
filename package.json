@@ -19,6 +19,8 @@
     "@angular/router": "^22.2.0",
     "@apollo/client": "^4.3.1",
     "@maplibre/ngx-maplibre-gl": "^22.1.0",
+    "@ngx-translate/core": "^18.0.0",
+    "@ngx-translate/http-loader": "^18.0.0",
     "apollo-angular": "^14.2.0",
     "graphql": "^17.0.2",
     "graphql-ws": "^6.3.0",

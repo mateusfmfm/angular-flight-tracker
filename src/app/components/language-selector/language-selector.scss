@@ -1,0 +1,54 @@
+:host {
+  display: block;
+}
+
+.selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  border: 1px solid #3d4a5c;
+  border-radius: 999px;
+  background: #151c28;
+}
+
+.flag {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+  transition: background-color 0.15s ease;
+
+  img {
+    width: 1.45rem;
+    height: 1.45rem;
+    object-fit: cover;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: filter 0.15s ease, opacity 0.15s ease;
+  }
+}
+
+.flag:not(.flag--active) img {
+  filter: brightness(0.45);
+  opacity: 0.7;
+}
+
+.flag--active {
+  background: #2a3546;
+}
+
+.flag:not(.flag--active):hover {
+  background: #2a3546;
+
+  img {
+    filter: none;
+    opacity: .85;
+  }
+}
