@@ -9,3 +9,17 @@ mgl-map {
   width: 100%;
   height: 100%;
 }
+
+.map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map__aircraft {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}

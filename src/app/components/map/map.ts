@@ -5,7 +5,7 @@ import {
   NavigationControlDirective,
 } from '@maplibre/ngx-maplibre-gl';
 import type { LngLatLike, Map as MapLibreMap } from 'maplibre-gl';
-
+import { AircraftComponent } from '../aircraft-component/aircraft-component';
 
 export interface MapViewportBounds {
   lamin: number; // latitude mínima (sul)
@@ -16,13 +16,13 @@ export interface MapViewportBounds {
 
 @Component({
   selector: 'app-map',
-  imports: [MapComponent, ControlComponent, NavigationControlDirective],
+  imports: [MapComponent, ControlComponent, NavigationControlDirective, AircraftComponent],
   templateUrl: './map.html',
   styleUrl: './map.scss',
 })
 export class FlightMap {
   /** OpenFreeMap Bright — sem API key (tema claro) */
-  readonly mapStyle = 'https://tiles.openfreemap.org/styles/dark';
+  readonly mapStyle = 'https://tiles.openfreemap.org/styles/bright';
   readonly center: LngLatLike = [-46.6333, -23.5505];
   readonly zoom = 10;
 

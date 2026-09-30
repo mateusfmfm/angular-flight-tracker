@@ -1,9 +1,12 @@
-<mgl-map
-  [mapStyle]="mapStyle"
-  [center]="center"
-  [zoom]="zoom"
-  (mapLoad)="onMapLoad($event)"
-  (moveEnd)="onMoveEnd()"
->
-  <mgl-control mglNavigation position="top-right" />
-</mgl-map>
+<div class="map">
+  <mgl-map
+    [mapStyle]="mapStyle"
+    [center]="center"
+    [zoom]="zoom"
+    (mapLoad)="onMapLoad($event)"
+    (moveEnd)="onMoveEnd()"
+  >
+    <mgl-control mglNavigation position="top-right" />
+  </mgl-map>
+  <app-aircraft-component class="map__aircraft"/>
+</div>
