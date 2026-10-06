@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import {
   ControlComponent,
   MapComponent,
@@ -7,14 +7,9 @@ import {
 import type { LngLatLike, Map as MapLibreMap } from 'maplibre-gl';
 import { mockAircraft } from '../../data/models/aircraft.mock';
 import { Aircraft } from '../../data/models/aircraft.model';
+import { FlightFilter } from '../../data/models/flight-filter.model';
 import { AircraftComponent } from '../aircraft-component/aircraft-component';
-
-export interface MapViewportBounds {
-  lamin: number; // latitude mínima (sul)
-  lomin: number; // longitude mínima (oeste)
-  lamax: number; // latitude máxima (norte)
-  lomax: number; // longitude máxima (leste)
-}
+import { FlightService } from '../../data/services/flight.service';
 
 @Component({
   selector: 'app-map',
@@ -26,8 +21,6 @@ export interface MapViewportBounds {
   },
 })
 export class FlightMap {
-
-  /** OpenFreeMap Bright — sem API key (tema claro) */
   readonly mapStyle = 'https://tiles.openfreemap.org/styles/bright';
   readonly center: LngLatLike = [-46.6333, -23.5505];
   readonly zoom = 10;
@@ -35,12 +28,26 @@ export class FlightMap {
   readonly aircraftSelected = input(false);
   readonly aircraftClick = output<Aircraft>();
   readonly backgroundClick = output<void>();
+  readonly aircraftPoint = signal<{ x: number; y: number } | null>(null);
 
   private map?: MapLibreMap;
 
+  flightService: FlightService;
+  viewportBounds: FlightFilter;
+  readonly flights = signal<Aircraft[]>([]);
+
+  constructor(flightService: FlightService) {
+    this.flightService = flightService;
+  }
+
   onMapLoad(map: MapLibreMap): void {
     this.map = map;
-    this.logViewportBounds();
+    this.projectAircraft();
+    this.getViewportBounds();
+  }
+
+  onMove(): void {
+    this.projectAircraft();
   }
 
   onAircraftClick(aircraft: Aircraft): void {
@@ -57,11 +64,21 @@ export class FlightMap {
   }
 
   onMoveEnd(): void {
-    this.logViewportBounds();
+    this.getViewportBounds();
   }
 
-  /** Lê getBounds() da viewport e imprime no formato da API. */
-  logViewportBounds(): void {
+  private projectAircraft(): void {
+    const { latitude, longitude } = this.previewAircraft;
+    if (!this.map || latitude == null || longitude == null) {
+      this.aircraftPoint.set(null);
+      return;
+    }
+
+    const point = this.map.project([longitude, latitude]);
+    this.aircraftPoint.set({ x: point.x, y: point.y });
+  }
+
+  getViewportBounds(): void {
     if (!this.map) {
       return;
     }
@@ -70,17 +87,11 @@ export class FlightMap {
     const sw = bounds.getSouthWest();
     const ne = bounds.getNorthEast();
 
-    const viewport: MapViewportBounds = {
+    this.viewportBounds = {
       lamin: sw.lat,
       lomin: sw.lng,
       lamax: ne.lat,
       lomax: ne.lng,
     };
-
-    console.log('[FlightMap] viewport bounds (FlightFilter)', viewport);
-    console.log('[FlightMap] raw LngLatBounds', {
-      southWest: { lat: sw.lat, lng: sw.lng },
-      northEast: { lat: ne.lat, lng: ne.lng },
-    });
   }
 }

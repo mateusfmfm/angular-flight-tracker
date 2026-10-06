@@ -4,7 +4,10 @@ path {
 }
 
 svg {
-  transition: filter 0.3s ease;
+  transform-origin: center;
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
 }
 
 :host(:hover),

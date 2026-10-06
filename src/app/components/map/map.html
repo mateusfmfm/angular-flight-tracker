@@ -4,14 +4,19 @@
     [center]="center"
     [zoom]="zoom"
     (mapLoad)="onMapLoad($event)"
+    (move)="onMove()"
     (moveEnd)="onMoveEnd()"
   >
     <mgl-control mglNavigation position="top-right" />
   </mgl-map>
-  <app-aircraft-component
-    class="map__aircraft"
-    [aircraft]="previewAircraft"
-    [selected]="aircraftSelected()"
-    (aircraftClick)="onAircraftClick($event)"
-  />
+  @if (aircraftPoint(); as point) {
+    <app-aircraft-component
+      class="map__aircraft"
+      [style.left.px]="point.x"
+      [style.top.px]="point.y"
+      [aircraft]="previewAircraft"
+      [selected]="aircraftSelected()"
+      (aircraftClick)="onAircraftClick($event)"
+    />
+  }
 </div>
